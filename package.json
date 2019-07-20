@@ -4,11 +4,18 @@
   "description": "Cloning Youtube with Vanilla and NodeJS",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --exec babel-node ./index.js --delay 2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "milban",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
