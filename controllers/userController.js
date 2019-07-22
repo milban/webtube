@@ -1,12 +1,12 @@
 // Global
-const join = (req, res) => res.send('join')
-const login = (req, res) => res.send('login')
-const logout = (req, res) => res.send('logout')
+const join = (req, res) => res.render('join')
+const login = (req, res) => res.render('login')
+const logout = (req, res) => res.render('logout')
 
 // Users
-const users = (req, res) => res.send('users')
-const userDetail = (req, res) => res.send('userDetail')
-const editProfile = (req, res) => res.send('editProfile')
-const changePassword = (req, res) => res.send('changePassword')
+const users = (req, res) => res.render('users')
+const userDetail = (req, res) => res.render('userDetail')
+const editProfile = (req, res) => res.render('editProfile')
+const changePassword = (req, res) => res.render('changePassword')
 
 export { join, login, logout, users, userDetail, editProfile, changePassword }
