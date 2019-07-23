@@ -1,4 +1,3 @@
-import { videosData } from '../db'
 import routes from '../routes'
 
 // Global
