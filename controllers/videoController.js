@@ -1,8 +1,15 @@
 import routes from '../routes'
+import Video from '../models/Video'
 
 // Global
-const home = (req, res) => {
-  res.render('home', { pageTitle: 'Home', videosData })
+const home = async (req, res) => {
+  try {
+    const videosData = await Video.find({})
+    res.render('home', { pageTitle: 'Home', videosData })
+  } catch (error) {
+    console.log(error)
+    res.render('home', { pageTitle: 'Home', videosData })
+  }
 } // (template, added variable to template)
 const search = (req, res) => {
   const {
@@ -16,12 +23,18 @@ const search = (req, res) => {
 const videos = (req, res) => res.render('videos', { pageTitle: 'Videos' })
 
 const getUploadVideo = (req, res) => res.render('uploadVideo', { pageTitle: 'UploadVideo' })
-const postUploadVideo = (req, res) => {
+const postUploadVideo = async (req, res) => {
   const {
-    body: { file, title, description }
+    body: { title, description },
+    file: { path }
   } = req
-  // To Do: Upload and save video
-  res.redirect(routes.videoDetail(videosData[0].id))
+  const newVideo = await Video.create({
+    fileUrl: path,
+    title,
+    description
+  })
+  console.log(newVideo)
+  res.redirect(routes.videoDetail(newVideo.id))
 }
 
 const videoDetail = (req, res) => res.render('videoDetail', { pageTitle: 'VideoDetail' })

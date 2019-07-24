@@ -19,6 +19,7 @@ const postJoin = (req, res) => {
     res.redirect(routes.home)
   }
 }
+
 const getLogin = (req, res) => res.render('login', { pageTitle: 'Login' })
 const postLogin = (req, res) => {
   console.log(req.body)
