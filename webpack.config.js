@@ -12,6 +12,14 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(js)$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
+      },
+      {
         test: /\.(scss)$/, // scss 파일을 찾음
         use: ExtractCSS.extract([
           {
