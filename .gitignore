@@ -89,3 +89,6 @@ typings/
 
 # 임시적인 로컬 저장소
 uploads/
+
+# builded by webpack
+static/
