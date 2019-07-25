@@ -3,10 +3,11 @@ import routes from '../routes'
 import {
   videos,
   videoDetail,
-  editVideo,
   deleteVideo,
   getUploadVideo,
-  postUploadVideo
+  postUploadVideo,
+  getEditVideo,
+  postEditVideo
 } from '../controllers/videoController'
 import { uploadVideo } from '../middlewares'
 
@@ -16,7 +17,8 @@ videoRouter.get(routes.home, videos)
 videoRouter.get(routes.uploadVideo, getUploadVideo)
 videoRouter.post(routes.uploadVideo, uploadVideo, postUploadVideo)
 videoRouter.get(routes.videoDetail(), videoDetail)
-videoRouter.get(routes.editVideo, editVideo)
-videoRouter.get(routes.deleteVideo, deleteVideo)
+videoRouter.get(routes.editVideo(), getEditVideo)
+videoRouter.post(routes.editVideo(), postEditVideo)
+videoRouter.get(routes.deleteVideo(), deleteVideo)
 
 export default videoRouter
