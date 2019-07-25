@@ -1,5 +1,4 @@
 @import './congif/_variables';
-
-body {
-  background-color: $bgColor;
-}
+@import './congif/reset.scss';
+@import './main.scss';
+@import './partials/header.scss';
