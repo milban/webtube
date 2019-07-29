@@ -9,6 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
+      rgba(0, 0, 0, 0.024) 0px -6px 16px -6px;
     &:not(:last-child) {
       margin-bottom: 15px;
     }
@@ -21,8 +23,8 @@
     background-color: $black;
     color: white;
   }
-  .social-login--facebook {
-    background-color: #3a5998;
-    color: white;
+  .social-login--google {
+    background-color: white;
+    color: $black;
   }
 }

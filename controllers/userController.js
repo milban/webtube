@@ -7,7 +7,6 @@ const getJoin = (req, res) => {
   res.render('join', { pageTitle: 'Join' })
 }
 const postJoin = async (req, res, next) => {
-  console.log(req.body)
   const {
     body: { name, email, password, password2 }
   } = req
@@ -38,6 +37,12 @@ const postLogin = passport.authenticate('local', {
 const githubLogin = passport.authenticate('github')
 const githubLoginCallback = passport.authenticate('github', { failureRedirect: routes.login })
 const postGithubLogin = (req, res) => {
+  res.redirect(routes.home)
+}
+
+const googleLogin = passport.authenticate('google', { scope: ['profile', 'email'] })
+const googleLoginCallback = passport.authenticate('google', { failureRedirect: routes.login })
+const postGoogleLogin = (req, res) => {
   res.redirect(routes.home)
 }
 
@@ -77,5 +82,8 @@ export {
   githubLoginCallback,
   githubLogin,
   postGithubLogin,
-  getMe
+  getMe,
+  googleLogin,
+  googleLoginCallback,
+  postGoogleLogin
 }

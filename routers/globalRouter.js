@@ -10,7 +10,10 @@ import {
   githubLogin,
   githubLoginCallback,
   postGithubLogin,
-  getMe
+  getMe,
+  googleLogin,
+  googleLoginCallback,
+  postGoogleLogin
 } from '../controllers/userController'
 import { onlyPublic, onlyPrivate } from '../middlewares'
 
@@ -30,5 +33,8 @@ globalRouter.get(routes.github, githubLogin)
 globalRouter.get(routes.githubCallback, githubLoginCallback, postGithubLogin)
 
 globalRouter.get(routes.me, getMe)
+
+globalRouter.get(routes.google, googleLogin)
+globalRouter.get(routes.googleCallback, googleLoginCallback, postGoogleLogin)
 
 export default globalRouter
