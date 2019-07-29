@@ -15,19 +15,20 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, cb) => {
       const {
-        _json: { id, avatar_url, name, email }
+        _json: { id, avatar_url: avatarUrl, name, email }
       } = profile
       try {
         const user = await User.findOne({ email })
         if (user) {
           user.githubId = id
+          if (!user.avatarUrl) user.avatarUrl = avatarUrl
           user.save()
           return cb(null, user)
         }
         const newUser = await User.create({
           name,
           email,
-          avatarUrl: avatar_url,
+          avatarUrl,
           githubId: id
         })
         return cb(null, newUser)

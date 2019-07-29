@@ -47,10 +47,12 @@ const logout = (req, res) => {
 }
 
 // Users
-const users = (req, res) => res.render('users', { pageTitle: 'Users' })
 const userDetail = (req, res) => res.render('userDetail', { pageTitle: 'UserDetail' })
 const editProfile = (req, res) => res.render('editProfile', { pageTitle: 'EditProfile' })
 const changePassword = (req, res) => res.render('changePassword', { pageTitle: 'ChangePassword' })
+const getMe = (req, res) => {
+  res.render('userDetail', { pageTitle: 'User Detail', user: req.user })
+}
 
 export {
   getJoin,
@@ -58,11 +60,11 @@ export {
   getLogin,
   postLogin,
   logout,
-  users,
   userDetail,
   editProfile,
   changePassword,
   githubLoginCallback,
   githubLogin,
-  postGithubLogin
+  postGithubLogin,
+  getMe
 }
