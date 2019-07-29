@@ -47,7 +47,18 @@ const logout = (req, res) => {
 }
 
 // Users
-const userDetail = (req, res) => res.render('userDetail', { pageTitle: 'UserDetail' })
+const userDetail = async (req, res) => {
+  const {
+    params: { id }
+  } = req
+  try {
+    const user = await User.findById(id)
+    res.render('userDetail', { pageTitle: 'UserDetail', user })
+  } catch (error) {
+    console.log(error)
+    res.redirect(routes.home)
+  }
+}
 const editProfile = (req, res) => res.render('editProfile', { pageTitle: 'EditProfile' })
 const changePassword = (req, res) => res.render('changePassword', { pageTitle: 'ChangePassword' })
 const getMe = (req, res) => {
