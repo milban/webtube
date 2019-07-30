@@ -9,8 +9,8 @@ const SEARCH = '/search'
 const USERS = '/users'
 const EDIT_PROFILE = '/edit-profile'
 const CHANGE_PASSWORD = '/change-password'
-const USER_DETAIL = '/:id'
 const ME = '/me'
+const USER_DETAIL = '/:id'
 
 // Videos
 const VIDEOS = '/videos'

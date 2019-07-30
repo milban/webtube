@@ -64,7 +64,7 @@ const userDetail = async (req, res) => {
     res.redirect(routes.home)
   }
 }
-const editProfile = (req, res) => res.render('editProfile', { pageTitle: 'EditProfile' })
+const getEditProfile = (req, res) => res.render('editProfile', { pageTitle: 'EditProfile' })
 const changePassword = (req, res) => res.render('changePassword', { pageTitle: 'ChangePassword' })
 const getMe = (req, res) => {
   res.render('userDetail', { pageTitle: 'User Detail', user: req.user })
@@ -77,7 +77,7 @@ export {
   postLogin,
   logout,
   userDetail,
-  editProfile,
+  getEditProfile,
   changePassword,
   githubLoginCallback,
   githubLogin,
