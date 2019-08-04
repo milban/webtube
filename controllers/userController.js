@@ -65,6 +65,23 @@ const userDetail = async (req, res) => {
   }
 }
 const getEditProfile = (req, res) => res.render('editProfile', { pageTitle: 'EditProfile' })
+const postEditProfile = async (req, res) => {
+  const {
+    body: { name, email },
+    file: { path },
+    user: { id }
+  } = req
+  try {
+    await User.findByIdAndUpdate(id, {
+      name,
+      email,
+      avatarUrl: path ? path : req.user.avatarUrl
+    })
+    res.redirect(routes.me)
+  } catch (error) {
+    res.render('editProfile', { pageTitle: 'Edit Profile' })
+  }
+}
 const changePassword = (req, res) => res.render('changePassword', { pageTitle: 'ChangePassword' })
 const getMe = (req, res) => {
   res.render('userDetail', { pageTitle: 'User Detail', user: req.user })
@@ -78,6 +95,7 @@ export {
   logout,
   userDetail,
   getEditProfile,
+  postEditProfile,
   changePassword,
   githubLoginCallback,
   githubLogin,
