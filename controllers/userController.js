@@ -104,6 +104,7 @@ const postChangePassword = async (req, res) => {
 const getMe = async (req, res) => {
   res.status(400)
   const user = await User.findOne({ _id: req.user.id }).populate('videos')
+  console.log(user)
   res.render('userDetail', { pageTitle: 'User Detail', user })
 }
 

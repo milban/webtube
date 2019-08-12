@@ -1,8 +1,11 @@
 .videoBlock {
+  margin: 10px 10px;
+  display: flex;
   video {
     margin-bottom: 10px;
-    max-width: 100%;
-    max-height: 700px;
+    width: 200px;
+    height: 117px;
+    background-color: black;
   }
   .videoBlock__title {
     font-size: 18px;
