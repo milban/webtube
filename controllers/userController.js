@@ -57,7 +57,8 @@ const userDetail = async (req, res) => {
     params: { id }
   } = req
   try {
-    const user = await User.findById(id)
+    const user = await User.findOne({ _id: id })
+    console.log(user)
     res.render('userDetail', { pageTitle: 'UserDetail', user })
   } catch (error) {
     console.log(error)
