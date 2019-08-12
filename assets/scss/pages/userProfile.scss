@@ -21,4 +21,22 @@
       margin-bottom: 20px;
     }
   }
+  .user-profile__videos {
+    padding: 20px;
+    .videos {
+      padding: 20px;
+      .videoBlock {
+        width: 200px;
+        height: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .videoBlock__thumbnail {
+          width: 200px;
+          height: 100px;
+          background-color: black;
+        }
+      }
+    }
+  }
 }

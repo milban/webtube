@@ -40,8 +40,8 @@ const postUploadVideo = async (req, res) => {
     description,
     creator: req.user.id
   })
-  req.user.videos.push(newVideo.id)
-  req.user.save()
+  await req.user.videos.push(newVideo.id)
+  await req.user.save()
   res.redirect(routes.videoDetail(newVideo.id))
 }
 
@@ -65,7 +65,9 @@ const getEditVideo = async (req, res) => {
   } = req
   try {
     const video = await Video.findById(id)
-    console.log(video)
+    if (video.creator.toString() !== req.user.id) {
+      throw Error()
+    }
     res.render('editVideo', { pageTitle: 'Edit Video', video })
   } catch (error) {
     console.log(error)
@@ -89,7 +91,11 @@ const deleteVideo = async (req, res) => {
     params: { id }
   } = req
   try {
-    await Video.findByIdAndRemove(id)
+    const video = await Video.findById(id)
+    if (video.creator.toString() !== req.user.id) {
+      throw Error()
+    }
+    await video.remove()
   } catch (error) {
     console.log(error)
   }

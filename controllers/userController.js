@@ -57,8 +57,7 @@ const userDetail = async (req, res) => {
     params: { id }
   } = req
   try {
-    const user = await User.findOne({ _id: id })
-    console.log(user)
+    const user = await User.findOne({ _id: id }).populate('videos')
     res.render('userDetail', { pageTitle: 'UserDetail', user })
   } catch (error) {
     console.log(error)
@@ -102,9 +101,10 @@ const postChangePassword = async (req, res) => {
     res.redirect('/users/change-password')
   }
 }
-const getMe = (req, res) => {
+const getMe = async (req, res) => {
   res.status(400)
-  res.render('userDetail', { pageTitle: 'User Detail', user: req.user })
+  const user = await User.findOne({ _id: req.user.id }).populate('videos')
+  res.render('userDetail', { pageTitle: 'User Detail', user })
 }
 
 export {
